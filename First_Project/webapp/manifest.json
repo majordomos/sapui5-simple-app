@@ -1,0 +1,129 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "first.project.First_Project",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "http://localhost:8081/services.odata.org/V2/Northwind/Northwind.svc",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "first.project.First_Project.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "App"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "first.project.First_Project.i18n.i18n"
+				}
+			},
+			"data": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "mainService",
+				"preload": true,
+				"settings": {
+					"useBatch": false
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "first.project.First_Project.view",
+				"controlAggregation": "pages",
+				"controlId": "app"
+			},
+			"routes": [
+				{
+					"name": "RouteApp",
+					"pattern": "",
+					"viewLevel": 1,
+					"target": [
+						"TargetApp"
+					]
+				},
+				{
+					"name": "DetailsRoute",
+					"pattern": "customer/{customerId}",
+					"viewLevel": 2,
+					"target": [
+						"TargetDetails"
+					]
+				}
+			],
+			"targets": {
+				"TargetApp": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "CustomerList",
+					"viewName": "CustomerList"
+				},
+				"TargetDetails": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "Details",
+					"viewName": "Details"
+				}
+			}
+		}
+	}
+}

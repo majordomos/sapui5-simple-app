@@ -1,0 +1,17 @@
+<mvc:View controllerName="first.project.First_Project.controller.Details"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:uxap="sap.uxap">
+    <uxap:ObjectPageLayout>
+        <uxap:headerTitle>
+            <uxap:ObjectPageDynamicHeaderTitle>
+                <uxap:heading>
+                    <Title text="{i18n>myTitle}"/>
+                </uxap:heading>
+                <uxap:actions>
+                <Button text="{i18n>navBack}" press="onNavBackButtonPress"/>
+                </uxap:actions>
+            </uxap:ObjectPageDynamicHeaderTitle>
+        </uxap:headerTitle>
+    </uxap:ObjectPageLayout>
+</mvc:View>
