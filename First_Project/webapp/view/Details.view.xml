@@ -1,17 +1,106 @@
-<mvc:View controllerName="first.project.First_Project.controller.Details"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m"
-    xmlns:uxap="sap.uxap">
-    <uxap:ObjectPageLayout>
-        <uxap:headerTitle>
-            <uxap:ObjectPageDynamicHeaderTitle>
-                <uxap:heading>
-                    <Title text="{i18n>myTitle}"/>
-                </uxap:heading>
-                <uxap:actions>
-                <Button text="{i18n>navBack}" press="onNavBackButtonPress"/>
-                </uxap:actions>
-            </uxap:ObjectPageDynamicHeaderTitle>
-        </uxap:headerTitle>
-    </uxap:ObjectPageLayout>
+<mvc:View
+	controllerName="first.project.First_Project.controller.Details"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:uxap="sap.uxap"
+>
+	<uxap:ObjectPageLayout binding="{this>/Customer}">
+		<uxap:headerTitle>
+			<uxap:ObjectPageDynamicHeaderTitle>
+				<uxap:heading>
+					<Title text="{
+						parts: [
+							{path:'this>CompanyName'},
+							{path:'this>ContactName'}
+						],
+						formatter: '.formatter.getCustomerDetailsTitle'
+						}"/>
+				</uxap:heading>
+				<uxap:actions>
+					<Button
+						text="{i18n>navBack}"
+						press="onPressNavBackButton"
+					/>
+					<Button
+						text="{i18n>editButtonText}"
+						press="onPressEditButton"
+						visible="{= ${this>/CurrentViewMode} === ${constants>/VIEW_MODES/DISPLAY}}"
+					/>
+					<Button
+						text="{i18n>saveButtonText}"
+						press="onPressSaveButton"
+						visible="{= ${this>/CurrentViewMode} === ${constants>/VIEW_MODES/EDIT} }"
+					/>
+					<Button
+						text="{i18n>cancelButtonText}"
+						press="onPressCancelButton"
+						visible="{= ${this>/CurrentViewMode} === ${constants>/VIEW_MODES/EDIT} }"
+					/>
+				</uxap:actions>
+			</uxap:ObjectPageDynamicHeaderTitle>
+		</uxap:headerTitle>
+		<uxap:headerContent>
+			<VBox>
+				<ObjectStatus text="{
+					parts:[
+						{path: 'i18n>customerIdLabel'},
+						{path: 'this>CustomerID'}
+					],
+					formatter: '.formatter.formatMessage'
+					}"/>
+				<ObjectStatus text="{
+					parts:[
+						{path: 'i18n>customerCountryLabel'},
+						{path: 'this>Country'}
+					],
+					formatter: '.formatter.formatMessage'
+					}"/>
+				<ObjectStatus text="{
+					parts:[
+						{path: 'i18n>customerCityLabel'},
+						{path: 'this>City'}
+					],
+					formatter: '.formatter.formatMessage'
+					}"/>
+				<ObjectStatus text="{
+					parts:[
+						{path: 'i18n>customerAddressLabel'},
+						{path: 'this>Address'}
+					],
+					formatter: '.formatter.formatMessage'
+					}"/>
+				<ObjectStatus text="{
+					parts:[
+						{path: 'i18n>customerPhoneLabel'},
+						{path:'this>Phone'}
+					],
+					formatter: '.formatter.formatMessage'
+					}"/>
+			</VBox>
+		</uxap:headerContent>
+		<uxap:sections>
+			<uxap:ObjectPageSection
+				titleUppercase="false"
+				title="{
+				path:'i18n>customerSectionName'
+			}"
+			>
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection
+						mode="Expanded"
+						titleUppercase="false"
+					>
+						<uxap:blocks>
+							<core:Fragment
+								fragmentName="first.project.First_Project.fragments.CustomerProfileForm"
+								type="XML"
+							/>
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+		</uxap:sections>
+	</uxap:ObjectPageLayout>
 </mvc:View>

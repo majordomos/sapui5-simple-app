@@ -1,11 +1,135 @@
-<mvc:View controllerName="first.project.First_Project.controller.CustomerList"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content>
-            <List headerText="Directions" items="{data>/Customers}">
-                <StandardListItem title="{data>CompanyName}" type="Active" press="onPressDetails"/>
-            </List>
-        </content>
-    </Page>
+<mvc:View
+	controllerName="first.project.First_Project.controller.CustomerList"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:table="sap.ui.table"
+>
+	<Page
+		showHeader="false"
+		enableScrolling="true"
+	>
+		<content>
+			<table:Table
+				rows="{data>/Customers}"
+				enableSelectAll="false"
+				selectionMode="None"
+				visibleRowCountMode="Auto"
+				cellClick="onPressDetails"
+				rowActionCount="1"
+			>
+				<table:extension>
+					<OverflowToolbar>
+						<Title
+							id="title"
+							text="{i18n>tableTitle}"
+						/>
+					</OverflowToolbar>
+				</table:extension>
+				<table:columns>
+					<table:Column>
+						<Label text="{i18n>idText}"/>
+						<table:template>
+							<Link
+								text="{data>CustomerID}"
+                                press="onPressDetails"
+								wrapping="false"
+							/>
+						</table:template>
+					</table:Column>
+					<table:Column>
+						<Label text="{i18n>companyNameText}"/>
+						<table:template>
+							<Text
+								text="{data>CompanyName}"
+								wrapping="false"
+							/>
+						</table:template>
+					</table:Column>
+					<table:Column>
+						<Label text="{i18n>contactNameText}"/>
+						<table:template>
+							<Text
+								text="{data>ContactName}"
+								wrapping="false"
+							/>
+						</table:template>
+					</table:Column>
+					<table:Column>
+						<Label text="{i18n>contactTitleText}"/>
+						<table:template>
+							<Text
+								text="{data>ContactTitle}"
+								wrapping="false"
+							/>
+						</table:template>
+					</table:Column>
+					<table:Column>
+						<Label text="{i18n>addressText}"/>
+						<table:template>
+							<Text
+								text="{data>Address}"
+								wrapping="false"
+							/>
+						</table:template>
+					</table:Column>
+					<table:Column>
+						<Label text="{i18n>cityText}"/>
+						<table:template>
+							<Text
+								text="{data>City}"
+								wrapping="false"
+							/>
+						</table:template>
+					</table:Column>
+					<table:Column>
+						<Label text="{i18n>postalCodeText}"/>
+						<table:template>
+							<Text
+								text="{data>PostalCode}"
+								wrapping="false"
+							/>
+						</table:template>
+					</table:Column>
+					<table:Column>
+						<Label text="{i18n>countryText}"/>
+						<table:template>
+							<Text
+								text="{data>Country}"
+								wrapping="false"
+							/>
+						</table:template>
+					</table:Column>
+					<table:Column>
+						<Label text="{i18n>phoneText}"/>
+						<table:template>
+							<Text
+								text="{data>Phone}"
+								wrapping="false"
+							/>
+						</table:template>
+					</table:Column>
+					<table:Column>
+						<Label text="{i18n>faxText}"/>
+						<table:template>
+							<Text
+								text="{data>Fax}"
+								wrapping="false"
+							/>
+						</table:template>
+					</table:Column>
+				</table:columns>
+				<table:rowActionTemplate>
+					<table:RowAction>
+						<table:items>
+							<table:RowActionItem
+								type="Navigation"
+								press="onPressDetails"
+							/>
+						</table:items>
+					</table:RowAction>
+				</table:rowActionTemplate>
+			</table:Table>
+		</content>
+	</Page>
 </mvc:View>

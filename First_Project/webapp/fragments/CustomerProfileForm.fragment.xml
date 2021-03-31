@@ -1,0 +1,67 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
+>
+	<f:Form editable="true">
+		<f:layout>
+			<f:ResponsiveGridLayout
+				columnsM="2"
+				columnsL="2"
+				labelSpanM="12"
+				labelSpanL="12"
+				labelSpanXL="12"
+			/>
+		</f:layout>
+		<f:formContainers>
+			<f:FormContainer>
+				<f:formElements>
+					<f:FormElement label="{i18n>companyNameText}">
+						<f:fields>
+							<VBox>
+								<Text text="{this>CompanyName}"
+								visible="{= ${this>/CurrentViewMode} === ${constants>/VIEW_MODES/DISPLAY} }"/>
+								<Input value="{this>CompanyName}"
+								visible="{= ${this>/CurrentViewMode} === ${constants>/VIEW_MODES/EDIT} }"/>
+							</VBox>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="{i18n>contactNameText}">
+						<f:fields>
+							<VBox>
+								<Text text="{this>ContactName}"
+								visible="{= ${this>/CurrentViewMode} === ${constants>/VIEW_MODES/DISPLAY} }"/>
+								<Input value="{this>ContactName}"
+								visible="{= ${this>/CurrentViewMode} === ${constants>/VIEW_MODES/EDIT} }"/>
+							</VBox>
+						</f:fields>
+					</f:FormElement>
+				</f:formElements>
+			</f:FormContainer>
+			<f:FormContainer>
+				<f:formElements>
+					<f:FormElement label="{i18n>cityText}">
+						<f:fields>
+							<VBox>
+								<Text text="{this>City}"
+								visible="{= ${this>/CurrentViewMode} === ${constants>/VIEW_MODES/DISPLAY} }"/>
+								<Input value="{this>City}"
+								visible="{= ${this>/CurrentViewMode} === ${constants>/VIEW_MODES/EDIT} }"/>
+							</VBox>
+						</f:fields>
+					</f:FormElement>
+					<f:FormElement label="{i18n>phoneText}">
+						<f:fields>
+							<VBox>
+								<Text text="{this>Phone}"
+								visible="{= ${this>/CurrentViewMode} === ${constants>/VIEW_MODES/DISPLAY} }"/>
+								<Input value="{this>Phone}"
+								visible="{= ${this>/CurrentViewMode} === ${constants>/VIEW_MODES/EDIT} }"/>
+							</VBox>
+						</f:fields>
+					</f:FormElement>
+				</f:formElements>
+			</f:FormContainer>
+		</f:formContainers>
+	</f:Form>
+</c:FragmentDefinition>
