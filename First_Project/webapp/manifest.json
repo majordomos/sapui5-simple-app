@@ -103,7 +103,7 @@
 				},
 				{
 					"name": "DetailsRoute",
-					"pattern": "customer/{customerId}",
+					"pattern": "customer/{customerId}/:showdialog:",
 					"viewLevel": 2,
 					"target": [
 						"TargetDetails"

@@ -21,8 +21,13 @@
 				<table:extension>
 					<OverflowToolbar>
 						<Title
+							class="kekw"
 							id="title"
 							text="{i18n>tableTitle}"
+						/>
+						<Button
+							text="{i18n>createCustomerButtonText}"
+							press="onPressCreateCustomer"
 						/>
 					</OverflowToolbar>
 				</table:extension>
@@ -32,7 +37,7 @@
 						<table:template>
 							<Link
 								text="{data>CustomerID}"
-                                press="onPressDetails"
+								press="onPressDetails"
 								wrapping="false"
 							/>
 						</table:template>

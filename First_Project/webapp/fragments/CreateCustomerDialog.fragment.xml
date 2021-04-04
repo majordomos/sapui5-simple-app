@@ -1,0 +1,108 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
+>
+	<Dialog
+		id="createCustomerDialogID"
+		title="{i18n>createCustomerDialogTitleText}"
+		afterClose="onAfterCloseCreateCustomerDialog"
+		binding="{this>/CreateCustomerDialogData}"
+	>
+		<f:Form editable="true">
+			<f:layout>
+				<f:ResponsiveGridLayout
+					columnsM="2"
+					columnsL="2"
+					labelSpanM="12"
+					labelSpanL="12"
+					labelSpanXL="12"
+				/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement label="{i18n>companyNameText}">
+							<f:fields>
+								<VBox>
+									<Input value="{this>CompanyName}"/>
+								</VBox>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{i18n>contactNameText}">
+							<f:fields>
+								<VBox>
+									<Input value="{this>ContactName}"/>
+								</VBox>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{i18n>contactTitleText}">
+							<f:fields>
+								<VBox>
+									<Input value="{this>ContactTitle}"/>
+								</VBox>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{i18n>addressText}">
+							<f:fields>
+								<VBox>
+									<Input value="{this>Address}"/>
+								</VBox>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{i18n>cityText}">
+							<f:fields>
+								<VBox>
+									<Input value="{this>City}"/>
+								</VBox>
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement label="{i18n>postalCodeText}">
+							<f:fields>
+								<VBox>
+									<Input value="{this>PostalCode}"/>
+								</VBox>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{i18n>countryText}">
+							<f:fields>
+								<VBox>
+									<Input value="{this>Country}"/>
+								</VBox>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{i18n>phoneText}">
+							<f:fields>
+								<VBox>
+									<Input value="{this>Phone}"/>
+								</VBox>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{i18n>faxText}">
+							<f:fields>
+								<VBox>
+									<Input value="{this>Fax}"/>
+								</VBox>
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+		<buttons>
+			<Button
+				text="{i18n>saveButtonText}"
+				press="onPressSaveButton"
+				type="Emphasized"
+			/>
+			<Button
+				text="{i18n>cancelButtonText}"
+				press="onPressCancelButton"
+			/>
+		</buttons>
+	</Dialog>
+</c:FragmentDefinition>
